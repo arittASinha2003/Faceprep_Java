@@ -34,8 +34,12 @@ class Main
       int wid = ar.nextInt();
       float rad = ar.nextFloat();
       int sq_area = side * side;
+      System.out.println(sq_area);
       int rec_area = len * wid;
-      float cir_area = 3.14f * rad * rad;
-      System.out.printf("%d\n%d\n%.2f\n", sq_area, rec_area, cir_area);
+      System.out.println(rec_area);
+      // float cir_area = 3.14f * rad * rad;
+      double cir_area = 3.14 * rad * rad * 100;
+      // System.out.printf("%d\n%d\n%.2f\n", sq_area, rec_area, cir_area);
+      System.out.printf("%.2f\n", Math.floor(cir_area) * 0.01);
     }
 }
