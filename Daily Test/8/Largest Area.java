@@ -39,8 +39,10 @@ public class Main {
         double length = ar.nextDouble();
         double breadth = ar.nextDouble();
 
-        double circularPoolArea = Math.PI * radius * radius;
-        double rectangularPoolArea = length * breadth;
+        // double circularPoolArea = Math.PI * radius * radius;
+        double circularPoolArea = 2 * 3.14 * radius;
+        // double rectangularPoolArea = length * breadth;
+        double rectangularPoolArea = 2 * (length + breadth);
 
         System.out.printf("%.2f\n", circularPoolArea);
         System.out.printf("%.2f\n", rectangularPoolArea);
