@@ -20,8 +20,10 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Scanner ar = new Scanner(System.in);
-        String str1 = ar.nextLine();
-        String str2 = ar.nextLine();
+        // String str1 = ar.nextLine();
+        String str1 = ar.next();
+        // String str2 = ar.nextLine();
+        String str2 = ar.next();
 
         System.out.println("Strings before swapping: " + str1 + " " + str2);
 
