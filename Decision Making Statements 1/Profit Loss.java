@@ -22,24 +22,41 @@
 // Output (stdout):
 // No profit nor loss
 
+// import java.util.Scanner;
+// import java.text.DecimalFormat;
+
+// public class Main {
+//     public static void main(String[] args) {
+//         Scanner ar = new Scanner(System.in);
+//         double X = ar.nextDouble();
+//         double Y = ar.nextDouble();
+//         double costPrice = X / 12;
+//         double profitOrLoss = Y - costPrice;
+//         DecimalFormat df = new DecimalFormat("0.00");
+
+//         if (profitOrLoss > 0) {
+//             System.out.println("Profit : Rs." + df.format(profitOrLoss * 12));
+//         } else if (profitOrLoss < 0) {
+//             System.out.println("Loss : Rs." + df.format(-profitOrLoss * 12));
+//         } else {
+//             System.out.println("No profit nor loss");
+//         }
+//     }
+// }
+
 import java.util.Scanner;
-import java.text.DecimalFormat;
-
-public class Main {
-    public static void main(String[] args) {
+class Main
+{
+    public static void main(String args[])
+    {
         Scanner ar = new Scanner(System.in);
-        double X = ar.nextDouble();
-        double Y = ar.nextDouble();
-        double costPrice = X / 12;
-        double profitOrLoss = Y - costPrice;
-        DecimalFormat df = new DecimalFormat("0.00");
-
-        if (profitOrLoss > 0) {
-            System.out.println("Profit : Rs." + df.format(profitOrLoss * 12));
-        } else if (profitOrLoss < 0) {
-            System.out.println("Loss : Rs." + df.format(-profitOrLoss * 12));
-        } else {
-            System.out.println("No profit nor loss");
-        }
+        float a = ar.nextFloat();
+        float b = ar.nextFloat();
+        if(a > (b * 12))
+        System.out.printf("Loss : Rs.%.2f",(a - b * 12));
+        else if(a < (b * 12))
+        System.out.printf("Profit : Rs.%.2f",(a - b * 12));
+        else
+        System.out.println("No profit nor loss");
     }
 }
