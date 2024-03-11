@@ -78,38 +78,88 @@
 // 1
 // 1
 
+// import java.util.*;
+
+// public class Main {
+//     public static void main(String[] args) {
+//         Scanner ar = new Scanner(System.in);
+//         int n = ar.nextInt();
+//         int m = ar.nextInt();
+//         int[] A = new int[n+1];
+//         for(int i=1; i<=n; i++) {
+//             A[i] = ar.nextInt();
+//         }
+//         int[][] queries = new int[m][2];
+//         for(int i=0; i<m; i++) {
+//             queries[i][0] = ar.nextInt();
+//             queries[i][1] = ar.nextInt();
+//         }
+//         for(int[] query : queries) {
+//             System.out.println(countNumbers(A, query[0], query[1]));
+//         }
+//     }
+
+//     public static int countNumbers(int[] A, int l, int r) {
+//         Map<Integer, Integer> countMap = new HashMap<>();
+//         for(int i=l; i<=r; i++) {
+//             countMap.put(A[i], countMap.getOrDefault(A[i], 0) + 1);
+//         }
+//         int count = 0;
+//         for(Map.Entry<Integer, Integer> entry : countMap.entrySet()) {
+//             if(entry.getKey().equals(entry.getValue())) {
+//                 count++;
+//             }
+//         }
+//         return count;
+//     }
+// }
+
 import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
-        Scanner ar = new Scanner(System.in);
-        int n = ar.nextInt();
-        int m = ar.nextInt();
-        int[] A = new int[n+1];
-        for(int i=1; i<=n; i++) {
-            A[i] = ar.nextInt();
+        Scanner scanner = new Scanner(System.in);
+
+        // Read input size and number of queries
+        int n = scanner.nextInt();
+        int m = scanner.nextInt();
+
+        // Read the array A
+        int[] A = new int[n];
+        for (int i = 0; i < n; i++) {
+            A[i] = scanner.nextInt();
         }
-        int[][] queries = new int[m][2];
-        for(int i=0; i<m; i++) {
-            queries[i][0] = ar.nextInt();
-            queries[i][1] = ar.nextInt();
-        }
-        for(int[] query : queries) {
-            System.out.println(countNumbers(A, query[0], query[1]));
+
+        // Process each query
+        for (int q = 0; q < m; q++) {
+            // Read query parameters
+            int start = scanner.nextInt() - 1; // Adjust index to 0-based
+            int end = scanner.nextInt() - 1;   // Adjust index to 0-based
+
+            // Count numbers that occur exactly x times
+            int count = countNumbers(A, start, end);
+
+            // Print the answer
+            System.out.println(count);
         }
     }
 
-    public static int countNumbers(int[] A, int l, int r) {
-        Map<Integer, Integer> countMap = new HashMap<>();
-        for(int i=l; i<=r; i++) {
-            countMap.put(A[i], countMap.getOrDefault(A[i], 0) + 1);
+    // Helper method to count numbers that occur exactly x times in a range
+    private static int countNumbers(int[] A, int start, int end) {
+        int[] frequency = new int[end - start + 1];
+        for (int i = start; i <= end; i++) {
+            if (A[i] >= 1 && A[i] <= frequency.length) {
+                frequency[A[i] - 1]++;
+            }
         }
+
         int count = 0;
-        for(Map.Entry<Integer, Integer> entry : countMap.entrySet()) {
-            if(entry.getKey().equals(entry.getValue())) {
+        for (int i = 0; i < frequency.length; i++) {
+            if (frequency[i] == i + 1) {
                 count++;
             }
         }
+
         return count;
     }
 }
